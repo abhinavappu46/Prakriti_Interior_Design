@@ -1,0 +1,121 @@
+.MainBottomContainer {
+    background-color: #111315;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 50px;
+}
+
+.DetailCard {
+    width: 250px;
+    height: 350px;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    padding: 20px;
+    gap: 25px;
+}
+
+.DetailCard h3 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #F5F5F2;
+margin-top: 50px;
+}
+
+.DetailCard img {
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+}
+
+.DetailCard p {
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #A3A3A3;
+}
+.DetailCard h6{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: #A3A3A3;
+}
+.DetailCard a{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: #A3A3A3;
+    text-decoration: none;
+    font-size: 0.67em;
+    font-weight: 700;
+}
+@media (max-width:768px){
+
+.MainBottomContainer{
+
+    height:auto;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:30px;
+    padding:40px 20px;
+
+}
+
+.DetailCard{
+
+    width:100%;
+    height:auto;
+    padding:10px 0;
+    gap:18px;
+
+}
+
+.DetailCard img{
+
+    width:45px;
+    height:45px;
+    margin-top:0;
+
+}
+
+.DetailCard h3{
+
+    margin-top:0;
+    font-size:14px;
+    letter-spacing:1.5px;
+
+}
+
+.DetailCard p{
+
+    font-size:15px;
+    line-height:1.8;
+
+}
+
+.DetailCard h6{
+
+    font-size:14px;
+    line-height:1.7;
+
+}
+
+.DetailCard a{
+
+    font-size:15px;
+    transition:.3s;
+
+}
+
+.DetailCard a:hover{
+
+    color:#D4AF37;
+
+}
+
+}

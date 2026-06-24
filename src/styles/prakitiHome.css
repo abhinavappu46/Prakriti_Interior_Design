@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
+.Mainconatiner {
+    width: 100%;
+    height: 100vh;
+    background:
+        linear-gradient(to right,
+            rgba(0, 0, 0, .82),
+            rgba(0, 0, 0, .55),
+            rgba(0, 0, 0, .45)),
+        url("../assets/living_room.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.Navbar {
+    position: fixed;
+    width: 100%;
+   padding:15px 16px;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    transition: all .4s ease;
+    align-items: center;
+    background: rgba(15, 15, 15, .75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    top: 0;
+    left: 0;
+
+}
+
+.LinkDiv {
+    display: flex;
+    gap: 50px;
+}
+
+.Links {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    transition: .3s;
+    text-decoration: none;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.Links:hover {
+    color: #D4AF37;
+    transform: translateY(-3px);
+}
+
+.NavBtn {
+    background: #D4AF37;
+    color: #111;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: .3s;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.NavBtn:hover {
+    background: #E6C878;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, .35);
+}
+
+.ImgDiv {
+    width: auto;
+    height: 50px;
+    display: flex;
+    gap: 50px;
+}
+
+.ImgDiv h1 {
+    font-family: "Playfair Display", serif;
+    font-size:2.3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #D4AF37;
+
+}
+
+
+
+/* img {
+    max-width: 100%;
+    height: auto;
+} */
+
+.Main-Contents {
+    padding-top: 150px;
+    margin-left: 100px;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.Main-Contents h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #F8F5F0;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.Main-Contents p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: #CFCFCF;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.Main-Contents button {
+    background-color: #D4AF37;
+    color: #111;
+    width: 200px;
+    height: 50px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 650;
+    font-size: 1rem;
+    border-radius: 10px;
+    transition: all .3s ease;
+}
+
+.Main-Contents button:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, .35);
+}
+
+.DescriptionDiv {
+    width: 300px;
+    height: 350px;
+    color: #CFCFCF;
+    background: rgba(15, 15, 15, .4);
+    backdrop-filter: blur(10px);
+    margin-right: 250px;
+    margin-top: 200px;
+
+    border-radius: 15px;
+    display: flex;
+    padding: 20px 50px;
+    align-items: start;
+    flex-direction: column;
+    gap: 50px;
+    text-align: left;
+}
+
+.DescriptionDiv h1 {
+    color: #D4AF37;
+    font-family: "Playfair Display", serif;
+}
+
+.DescriptionDiv p {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.DescriptionDiv:hover {
+    transform: translateY(-5px);
+}
+
+.Logo {
+    width: 50px;
+    height: 60px;
+}
+
+.MenuIcon {
+    display: none;
+}
+
+.MobileMenu {
+    display: none;
+    
+}
+
+
+@media (max-width:768px) {
+    .Navbar {
+
+         padding:15px 16px;
+    }
+
+    .LinkDiv {
+
+        display: none;
+
+    }
+
+    .NavBtn {
+
+        display: none;
+
+    }
+
+    .ImgDiv {
+
+        gap: 15px;
+
+
+    }
+
+    .ImgDiv h1 {
+        font-size: 1.8rem;
+    }
+
+    .Main-Contents {
+        width: 90%;
+        margin-left: 0;
+        padding-top: 130px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .Main-Contents h1 {
+        font-size: 2.7rem;
+    }
+
+    .Main-Contents p {
+
+        font-size: 1rem;
+
+    }
+
+    .Main-Contents button {
+
+        width: 180px;
+
+    }
+
+    .DescriptionDiv {
+
+        width: 90%;
+        padding: 20px;
+        gap: 35px;
+        margin: 40px 0 0;
+
+    }
+
+    .Mainconatiner {
+        min-height: 100vh;
+        height: auto;
+        padding-bottom: 50px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .MenuIcon {
+
+        display: block;
+
+        font-size: 30px;
+
+        color: #D4AF37;
+
+        cursor: pointer;
+
+    }
+
+    .MobileMenu {
+
+        position: fixed;
+
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+
+        background: rgba(11, 13, 15, 0.95);
+        backdrop-filter: blur(15px);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        gap: 30px;
+        padding-top: 50px;
+
+        z-index: 999;
+        animation: slideDown .35s ease
+
+        
+    }
+
+    .MobileMenu a {
+
+        color: white;
+
+        font-size: 20px;
+
+        text-decoration: none;
+
+        font-family: "Plus Jakarta Sans", sans-serif;
+
+        transition: .3s;
+
+    }
+
+    .MobileMenu a:hover {
+
+        color: #D4AF37;
+
+    }
+
+    .MobileMenu button {
+
+        background: #D4AF37;
+
+        padding: 12px 28px;
+
+        border: none;
+
+        border-radius: 50px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+    }
+    .MenuIcon svg{
+    transition:.3s;
+}
+
+.MenuIcon svg:hover{
+    transform:scale(1.1);
+    color:#E6C878;
+}
+.Logo{
+    width:40px;
+    height:48px;
+}
+.ImgDiv h1{
+    font-size:1.8rem;
+}
+
+}
+@keyframes slideDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
