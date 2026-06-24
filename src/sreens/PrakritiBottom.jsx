@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/PrakritiBottom.css'
-import logo from '../assets/Prakriti_logo_transparent.png'
+import logo from '../assets/prakriti_logo_transparent.png'
  function PrakritiBottom() {
   return (
     <div className='MainBottomContainer'>
