@@ -60,7 +60,7 @@ const scrollToConsultation = ()=>{
         <div className="MobileMenu">
             <a href="#Home" onClick={() => setMenuOpen(false)}>Home</a>
             <a href="#About" onClick={() => setMenuOpen(false)}>About</a>
-            <a href="#Services" onClick={() => setMenuOpen(false)}>Services</a>
+           <a href='#Service' className='Links' onClick={() => setMenuOpen(false)}>Service</a>
             <a href="#Contact" onClick={() => setMenuOpen(false)}>Contact</a>
             <button
     onClick={() => {
