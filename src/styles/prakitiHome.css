@@ -43,7 +43,8 @@ html {
     border-bottom: 1px solid rgba(255, 255, 255, .08);
     top: 0;
     left: 0;
-
+    z-index: 10;
+    
 }
 
 .LinkDiv {
@@ -86,6 +87,7 @@ html {
     height: 50px;
     display: flex;
     gap: 50px;
+    z-index: 0;
 }
 
 .ImgDiv h1 {
@@ -154,7 +156,7 @@ html {
     backdrop-filter: blur(10px);
     margin-right: 250px;
     margin-top: 200px;
-
+z-index: 0;
     border-radius: 15px;
     display: flex;
     padding: 20px 50px;
@@ -196,6 +198,7 @@ html {
     .Navbar {
 
          padding:15px 16px;
+         z-index: 10;
     }
 
     .LinkDiv {
