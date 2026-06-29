@@ -107,7 +107,7 @@ transition: transform .4s ease;
   position: absolute;
   bottom: 50px;
   left: 40px;
-   z-index: 10;
+   z-index: 3;
 }
 
 .TextDiv h1 {
