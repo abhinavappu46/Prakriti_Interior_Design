@@ -76,7 +76,7 @@
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 20px;
 }
@@ -213,13 +213,14 @@ form{
 
     width:100%;
     
+    
 }
 
 .FromContainer2 select{
 
     width:100%;
     
-    margin-left: 15px;
+    
 }
 
 .FromContainer2 button{
