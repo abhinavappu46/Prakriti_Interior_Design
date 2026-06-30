@@ -1,7 +1,57 @@
 import React from 'react'
+import { useState } from 'react';
 import '../styles/PrakritiConsultant.css'
 import picture from '../assets/screen.png'
+import api from '../../Api call/Api';
 function PrakritiConsultant() {
+const [formData, setFormData] = useState({
+    Name: "",
+    Email: "",
+    Phone: "",
+    Service: ""
+});
+const handleChange = (e) => {
+
+    setFormData({
+
+        ...formData,
+
+        [e.target.name]: e.target.value
+
+    });
+
+};
+
+const HandleRequest= async(e)=>{
+
+   e.preventDefault();
+   try {
+    
+const res= await api.post("/consultation",formData);
+alert(res.data.message);
+setFormData({
+    Name: "",
+    Email: "",
+    Phone: "",
+    Service: ""
+});
+
+
+
+   } catch (error) {
+    alert(error.response?.data?.message || error.message ||
+        "Something went wrong");
+        console.log(error);
+   }
+
+
+}
+
+
+
+
+
+
   return (
     <div className='MainConsultantContainer'>
       <div className='FromContainerDiv'>
@@ -19,22 +69,23 @@ function PrakritiConsultant() {
 
 
 
-          <form>
+          <form onSubmit={HandleRequest}>
             <div className='FromContainer2label'><label>Full Name</label><br />
-              <input placeholder='Enter Name' className='InputGroup' type='text'></input><br /></div>
+              <input placeholder='Enter Name' className='InputGroup' type='text' name='Name' value={formData.Name} onChange={handleChange}></input><br /></div>
             <div className='FromContainer2label'><label>Email</label><br />
-              <input placeholder='Enter Email' className='InputGroup' type='Email'></input><br /></div>
+              <input placeholder='Enter Email' className='InputGroup' type='Email' name='Email' value={formData.Email} onChange={handleChange}></input><br /></div>
             <div className='FromContainer2label'><label>Phone No</label><br />
-              <input placeholder='Enter Phone number' className='InputGroup' type='text'></input><br /></div>
+              <input placeholder='Enter Phone number' className='InputGroup' type='text' name='Phone' value={formData.Phone} onChange={handleChange}></input><br /></div>
             <div className='FromContainer2label'><label>Project Type</label><br />
 
-              <select className='InputGroup'>
-                <option >Resident Villa</option>
-                <option >Building Project</option>
-                <option >other</option>
+              <select className='InputGroup' name='Service' value={formData.Service} onChange={handleChange}>
+                <option value="">Select Project Type</option>
+                <option value="Resident Villa">Resident Villa</option>
+                <option value="Building Project" >Building Project</option>
+                <option value="other">other</option>
               </select>
             </div>
-            <button>Sent Request</button>
+            <button type='submit'>Sent Request</button>
 
 
           </form>
