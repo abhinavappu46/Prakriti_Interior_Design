@@ -1,0 +1,59 @@
+.floating-container{
+    position: fixed;
+    bottom: 60px;
+    right: 50px;
+    transition:  transform 0.2s ease;
+    z-index: 11;
+}
+.contact-btn{
+     width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   font-size: 22px;
+  cursor: pointer;
+   text-decoration: none;
+  position: absolute;
+  transition: all 0.3s ease;
+  background: #0f172a;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.whatsapp {
+  background: #25d366;
+ bottom: 80px;
+
+}
+.contact-btn:hover{
+     transform: translateY(-6px);
+}
+.instagram {
+    background: linear-gradient(
+        45deg,
+        #f09433,
+        #e6683c,
+        #dc2743,
+        #cc2366,
+        #bc1888
+    );
+    bottom: 140px;
+}
+.Facebook{
+      background: linear-gradient(135deg, #1877F2, #145DBF);
+    color: white;
+    bottom: 20px;
+}
+.twitter{
+    background: #000000;
+    color: white;
+    bottom: 199px;
+}
+.up {
+  transform: translateY(-5px);
+}
+
+.down {
+  transform: translateY(5px);
+}

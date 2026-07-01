@@ -7,6 +7,7 @@ import PrakritiService from './PrakritiService';
 import PrakritiAbout from './PrakritiAbout';
 import PrakritiBottom from './PrakritiBottom';
 import { FaBars, FaTimes } from "react-icons/fa";
+import ScrollContact from './ScrollContact';
 function PrakitiHome() {
 const [menuOpen, setMenuOpen] =useState(false);
 const scrollToConsultation = ()=>{
@@ -104,6 +105,7 @@ const scrollToConsultation = ()=>{
         <div id='About'><PrakritiAbout/></div>
         <div id='consultation'><PrakritiConsultant/></div>
         <div id='Contact'><PrakritiBottom/></div>
+        <ScrollContact/>
         </div>
     )
 }
