@@ -3,7 +3,9 @@ import { useState } from 'react';
 import '../styles/PrakritiConsultant.css'
 import picture from '../assets/screen.png'
 import api from '../../Api call/Api';
+import emailjs from "@emailjs/browser";
 function PrakritiConsultant() {
+  const [Loading,setLoading]=useState(false);
 const [formData, setFormData] = useState({
     Name: "",
     Email: "",
@@ -25,7 +27,30 @@ const handleChange = (e) => {
 const HandleRequest= async(e)=>{
 
    e.preventDefault();
+   setLoading(true);
    try {
+    await emailjs.send(
+
+            "service_6g1m4ob",
+
+            "template_jwrydm4",
+
+            {
+
+                Name: formData.Name,
+
+                Email: formData.Email,
+
+                Phone: formData.Phone,
+
+                Service: formData.Service
+
+            },
+
+            "cpyOUbfmFj-L3e-U3"
+
+        );
+
     
 const res= await api.post("/consultation",formData);
 alert(res.data.message);
@@ -42,6 +67,8 @@ setFormData({
     alert(error.response?.data?.message || error.message ||
         "Something went wrong");
         console.log(error);
+   } finally{
+    setLoading(false);
    }
 
 
@@ -85,7 +112,7 @@ setFormData({
                 <option value="other">other</option>
               </select>
             </div>
-            <button type='submit'>Sent Request</button>
+            <button type='submit' disabled={Loading}>{Loading ? "sending..":"Sent Request"}</button>
 
 
           </form>
