@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/prakitiHome.css'
 import { Link } from "react-router-dom";
-import logo from '../assets/prakriti_logo_transparent.png'
 import PrakritiConsultant from './prakritiConsultant';
 import PrakritiService from './PrakritiService';
 import PrakritiAbout from './PrakritiAbout';
@@ -30,7 +29,7 @@ const scrollToConsultation = ()=>{
             <nav className='Navbar'>
                 
                 <div className='ImgDiv'>
-                    <img src={logo} alt='prakriti logo' className='Logo'></img>
+                    <img src="/prakriti_logo_transparent.png" alt='prakriti logo' className='Logo'></img>
                     <h1>Prakriti</h1>
                 </div>
 

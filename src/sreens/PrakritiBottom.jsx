@@ -1,11 +1,11 @@
 import React from 'react'
 import '../styles/PrakritiBottom.css'
-import logo from '../assets/prakriti_logo_transparent.png'
+
  function PrakritiBottom() {
   return (
     <div className='MainBottomContainer'>
       <div className='DetailCard'>
-        <img src={logo} alt="photo" />
+        <img src="/prakriti_logo_transparent.png" alt="photo" />
         <p>Crafting architectural legacies through the lens of quiet luxury and artisanal precision since 2012.</p>
       </div>
 
