@@ -38,7 +38,7 @@ const HandleRequest= async(e)=>{
  return;
    }
    if (!/^\d{10}$/.test(formData.Phone)) {
-    toast.error("📱 Please enter a valid 10-digit phone number.");
+    toast.error("Please enter a valid 10-digit phone number.");
     return;
 }
 if (!emailRegex.test(formData.Email)) {
