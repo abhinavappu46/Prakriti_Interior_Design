@@ -12,9 +12,9 @@
 .DetailCard {
     width: 250px;
     height: 350px;
-    /* border: 1px solid red; */
     display: flex;
     align-items: start;
+    justify-content:center;
     flex-direction: column;
     padding: 20px;
     gap: 25px;
@@ -47,12 +47,27 @@ margin-top: 50px;
     font-family: "Plus Jakarta Sans", sans-serif;
     color: #A3A3A3;
 }
-.DetailCard a{
+.Link{
     font-family: "Plus Jakarta Sans", sans-serif;
     color: #A3A3A3;
     text-decoration: none;
     font-size: 0.67em;
     font-weight: 700;
+    transition: all .4s ease;
+}
+.Link:hover{
+color: #D4AF37;
+    transform:translate3d(12px, 50%, 3em);
+}
+.contact-icon{
+color:#D4AF37;
+    font-size:24px;
+}
+#Address{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #A3A3A3;
 }
 @media (max-width:768px){
 

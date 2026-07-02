@@ -47,13 +47,13 @@ useEffect(() => {
 </button>
 <button className="contact-btn Facebook"
   onClick={() =>
-    window.open("", "_blank")
+    window.open("https://www.facebook.com/", "_blank")
   }>
 <FaFacebook/>
 </button>
 <button className="contact-btn twitter"
   onClick={() =>
-    window.open("", "_blank")
+    window.open("https://x.com/", "_blank")
   }>
 <FaXTwitter/>
 </button>

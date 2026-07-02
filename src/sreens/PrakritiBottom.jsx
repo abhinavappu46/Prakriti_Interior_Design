@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/PrakritiBottom.css'
-
+import { FaHouse } from "react-icons/fa6";
  function PrakritiBottom() {
   return (
     <div className='MainBottomContainer'>
@@ -9,28 +9,29 @@ import '../styles/PrakritiBottom.css'
         <p>Crafting architectural legacies through the lens of quiet luxury and artisanal precision since 2012.</p>
       </div>
 
-      <div className='DetailCard'>
-         <h3>Navigation</h3>
-         <h6>portfolio</h6>
-         <h6>Services</h6>
-         <h6>Process</h6>
-         <h6>Journal</h6>
-      </div>
+     
       <div className="DetailCard">
         <h3>Connect</h3>
-        <a href="">Instagram</a>
-        <a href="">LinkedIn</a>
-        <a href="">WhatsApp</a>
-        <a href="">Email</a>
+        <a className='Link' href="https://www.instagram.com/prakritiarchitectsandinteriors?igsh=MTFxeTYxM2JmemdpNA==">Instagram</a>
+        <a className='Link' href="https://www.facebook.com/">Facebook</a>
+        <a className='Link' href="https://x.com/">Twitter</a>
+        <a className='Link' href="https://wa.me/919061911970">WhatsApp</a>
+        <a
+  href="mailto:prakritiarchitectsandinteriors@gmail.com?subject=Interior%20Design%20Consultation&body=Hello%20Prakriti%20Interiors,%20I%20would%20like%20to%20discuss%20my%20project."
+className='Link' >
+  Contact On Email
+</a>
       </div>
-    <div className="DetailCard">
-<h3>Legal</h3>
-<h6>Privacy Policy</h6>
-<h6>Terms & Conditions</h6>
-<h6>FAQ</h6>
-<h6>Careers</h6>
+    
+<div className='DetailCard'>
+        <FaHouse className='contact-icon'/>
+        <p id='Address'>CVC HOMES, GROUND FLOOR FLAT NO . GB OPPOSITE
+14 AIRMEN SELECTION CENTER . OLIMUGAL MASJID
+SEAPORT AIRPORT ROAD,THRIKKAKARA,KAKKANAD
+KERALA, 682030</p>
+      </div>
 
-    </div>
+    
     </div>
   )
 }

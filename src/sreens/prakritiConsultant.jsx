@@ -4,8 +4,10 @@ import '../styles/PrakritiConsultant.css'
 import picture from '../assets/screen.png'
 import api from '../../Api call/Api';
 import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 function PrakritiConsultant() {
   const [Loading,setLoading]=useState(false);
+  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 const [formData, setFormData] = useState({
     Name: "",
     Email: "",
@@ -27,6 +29,26 @@ const handleChange = (e) => {
 const HandleRequest= async(e)=>{
 
    e.preventDefault();
+   if(formData.Name.trim()==+""){
+    toast.error("Please enter your full name.");
+    return;
+   }
+   if(!formData.Email.trim()){
+ toast.error("Please enter your Email.");
+ return;
+   }
+   if (!/^\d{10}$/.test(formData.Phone)) {
+    toast.error("📱 Please enter a valid 10-digit phone number.");
+    return;
+}
+if (!emailRegex.test(formData.Email)) {
+    toast.error("Please enter a valid email address.");
+    return;
+}
+if (!formData.Service) {
+    toast.error("Please select a project type.");
+    return;
+}
    setLoading(true);
    try {
     await emailjs.send(
@@ -53,7 +75,7 @@ const HandleRequest= async(e)=>{
 
     
 const res= await api.post("/consultation",formData);
-alert(res.data.message);
+toast.success("✅ Thank you! We'll contact you within 24 hours.");
 setFormData({
     Name: "",
     Email: "",
@@ -64,8 +86,7 @@ setFormData({
 
 
    } catch (error) {
-    alert(error.response?.data?.message || error.message ||
-        "Something went wrong");
+    toast.error("❌ Failed to send consultation request.");
         console.log(error);
    } finally{
     setLoading(false);
@@ -102,7 +123,7 @@ setFormData({
             <div className='FromContainer2label'><label>Email</label><br />
               <input placeholder='Enter Email' className='InputGroup' type='Email' name='Email' value={formData.Email} onChange={handleChange}></input><br /></div>
             <div className='FromContainer2label'><label>Phone No</label><br />
-              <input placeholder='Enter Phone number' className='InputGroup' type='text' name='Phone' value={formData.Phone} onChange={handleChange}></input><br /></div>
+              <input placeholder='Enter Phone number' className='InputGroup' type='text' name='Phone' maxLength={10} value={formData.Phone} onChange={handleChange} ></input><br /></div>
             <div className='FromContainer2label'><label>Project Type</label><br />
 
               <select className='InputGroup' name='Service' value={formData.Service} onChange={handleChange}>
