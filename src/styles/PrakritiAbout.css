@@ -109,7 +109,7 @@
 .imageDiv:hover .ImageInfo {
     bottom: 100px;
 }
-@media (max-width:768px){
+@media (max-width:992px){
 
 .MainAboutDiv{
     flex-direction: column-reverse;

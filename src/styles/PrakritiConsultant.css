@@ -146,7 +146,7 @@ transition: transform .4s ease;
     transition: .5s;
 }
 
-@media (max-width:768px){
+@media (max-width:992px){
 
 .MainConsultantContainer{
 

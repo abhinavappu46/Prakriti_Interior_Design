@@ -142,7 +142,7 @@
 .ServiceCard:hover .ServiceDescription::after {
     width: 100%;
 }
-@media (max-width:768px){
+@media (max-width:992px){
 
 .MainContainerService{
 
