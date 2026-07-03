@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/PrakritiBottom.css'
-import { FaHouse } from "react-icons/fa6";
+import { FaHouse ,FaPhone,FaPlus } from "react-icons/fa6";
  function PrakritiBottom() {
   return (
     <div className='MainBottomContainer'>
@@ -12,6 +12,7 @@ import { FaHouse } from "react-icons/fa6";
      
       <div className="DetailCard">
         <h3>Connect</h3>
+        <span id="Phone"><FaPhone size={12}/>  +91 9061911970</span>
         <a className='Link' href="https://www.instagram.com/prakritiarchitectsandinteriors?igsh=MTFxeTYxM2JmemdpNA==">Instagram</a>
         <a className='Link' href="https://www.facebook.com/">Facebook</a>
         <a className='Link' href="https://x.com/">Twitter</a>

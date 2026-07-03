@@ -23,7 +23,7 @@
 }
 .whatsapp {
   background: #25d366;
- bottom: 80px;
+ bottom: 80px;color: white;
 
 }
 .contact-btn:hover{
@@ -39,6 +39,7 @@
         #bc1888
     );
     bottom: 140px;
+    color: white;
 }
 .Facebook{
       background: linear-gradient(135deg, #1877F2, #145DBF);
