@@ -128,8 +128,13 @@ setFormData({
 
               <select className='InputGroup' name='Service' value={formData.Service} onChange={handleChange}>
                 <option value="">Select Project Type</option>
-                <option value="Resident Villa">Resident Villa</option>
-                <option value="Building Project" >Building Project</option>
+                <option value="Modular kitchen">Modular kitchen</option>
+                <option value="Bed Room" >Bed Room</option>
+                <option value="Kids Room" >Kids Room</option>
+                <option value="Bed Room" >Bed Room</option>
+                <option value="Ceiling" >Ceiling</option>
+                <option value="Tv Unit" >Tv unit</option>
+                <option value="LivingRoom" >LivingRoom</option>
                 <option value="other">other</option>
               </select>
             </div>
