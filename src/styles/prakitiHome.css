@@ -1,370 +1,389 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+/* CSS styling for Prakriti Home & Navigation Bar - Modern White Theme */
 
 .Mainconatiner {
     width: 100%;
-    height: 100vh;
-    background:
-        linear-gradient(to right,
-            rgba(0, 0, 0, .82),
-            rgba(0, 0, 0, .55),
-            rgba(0, 0, 0, .45)),
+    min-height: 100vh;
+    background: 
+        radial-gradient(circle at 65% 50%, transparent 20%, rgba(244, 235, 225, 0.6) 80%),
+        linear-gradient(to right, rgba(244, 235, 225, 0.75) 0%, rgba(244, 235, 225, 0.1) 50%, rgba(244, 235, 225, 0.75) 100%),
         url("../assets/living_room.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     justify-content: space-between;
-
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-
-
-}
-
-html {
-    scroll-behavior: smooth;
+    align-items: center;
+    padding: 100px 8% 50px;
+    position: relative;
 }
 
 .Navbar {
     position: fixed;
     width: 100%;
-   padding:15px 16px;
-    background: transparent;
+    padding: 20px 8%;
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     display: flex;
     justify-content: space-between;
-    transition: all .4s ease;
     align-items: center;
-    background: rgba(15, 15, 15, .75);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    border-bottom: 1px solid var(--border-color);
     top: 0;
     left: 0;
-    z-index: 10;
-    
+    z-index: 100;
+    transition: all var(--transition-normal);
+}
+
+.ImgDiv {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.Logo {
+    width: 44px;
+    height: auto;
+    object-fit: contain;
+    transition: transform var(--transition-normal);
+}
+
+.ImgDiv:hover .Logo {
+    transform: rotate(-10deg) scale(1.05);
+}
+
+.ImgDiv h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-primary);
 }
 
 .LinkDiv {
     display: flex;
-    gap: 50px;
+    gap: 40px;
 }
 
 .Links {
-    color: #FFFFFF;
-    font-size: 16px;
+    color: var(--text-secondary);
+    font-size: 15px;
     font-weight: 500;
-    transition: .3s;
     text-decoration: none;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
+    position: relative;
+    padding: 6px 0;
+    transition: color var(--transition-fast);
 }
 
 .Links:hover {
-    color: #D4AF37;
-    transform: translateY(-3px);
+    color: var(--primary-gold);
+}
+
+/* Modern Sliding Underline Interaction */
+.Links::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-gold);
+    transition: width var(--transition-normal), left var(--transition-normal);
+}
+
+.Links:hover::after {
+    width: 100%;
+    left: 0;
 }
 
 .NavBtn {
-    background: #D4AF37;
-    color: #111;
+    background: var(--primary-gold);
+    color: #FFFFFF;
+    border: none;
     padding: 12px 28px;
-    border-radius: 50px;
+    border-radius: var(--radius-full);
     font-weight: 600;
-    transition: .3s;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.2);
+    transition: all var(--transition-normal);
 }
 
 .NavBtn:hover {
-    background: #E6C878;
+    background: var(--primary-gold-hover);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, .35);
-}
-
-.ImgDiv {
-    width: auto;
-    height: 50px;
-    display: flex;
-    gap: 50px;
-    z-index: 0;
-}
-
-.ImgDiv h1 {
-    font-family: "Playfair Display", serif;
-    font-size:2.3rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #D4AF37;
-
-}
-
-
-
-/* img {
-    max-width: 100%;
-    height: auto;
-} */
-
-.Main-Contents {
-    padding-top: 150px;
-    margin-left: 100px;
-    max-width: 650px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.Main-Contents h1 {
-    font-family: "Playfair Display", serif;
-    font-size: 4.5rem;
-    font-weight: 700;
-    color: #F8F5F0;
-    line-height: 1.1;
-    margin: 0;
-}
-
-.Main-Contents p {
-    font-family: "Plus Jakarta Sans", sans-serif;
-    color: #CFCFCF;
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-.Main-Contents button {
-    background-color: #D4AF37;
-    color: #111;
-    width: 200px;
-    height: 50px;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-weight: 650;
-    font-size: 1rem;
-    border-radius: 10px;
-    transition: all .3s ease;
-}
-
-.Main-Contents button:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, .35);
-}
-
-.DescriptionDiv {
-    width: 300px;
-    height: 350px;
-    color: #CFCFCF;
-    background: rgba(15, 15, 15, .4);
-    backdrop-filter: blur(10px);
-    margin-right: 250px;
-    margin-top: 200px;
-z-index: 0;
-    border-radius: 15px;
-    display: flex;
-    padding: 20px 50px;
-    align-items: start;
-    flex-direction: column;
-    gap: 50px;
-    text-align: left;
-}
-
-.DescriptionDiv h1 {
-    color: #D4AF37;
-    font-family: "Playfair Display", serif;
-}
-
-.DescriptionDiv p {
-    font-family: "Plus Jakarta Sans", sans-serif;
-}
-
-.DescriptionDiv:hover {
-    transform: translateY(-5px);
-}
-
-.Logo {
-    width: 50px;
-    height: 60px;
+    box-shadow: var(--shadow-gold);
 }
 
 .MenuIcon {
     display: none;
+    font-size: 26px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: color var(--transition-fast);
 }
 
+.MenuIcon:hover {
+    color: var(--primary-gold);
+}
+
+/* Mobile Glassmorphic Drawer */
 .MobileMenu {
     display: none;
-    
 }
 
+.Main-Contents {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1;
+}
 
-@media (max-width:992px) {
+.Main-Contents h1 {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin: 0;
+}
+
+.GoldHighlight {
+    color: var(--primary-gold);
+    background: linear-gradient(120deg, var(--primary-gold) 0%, #C59F28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.Main-Contents p {
+    font-family: var(--font-sans);
+    color: var(--text-secondary);
+    font-size: 1.08rem;
+    line-height: 1.8;
+}
+
+.butn2container {
+    margin-top: 15px;
+}
+
+.butn2container button {
+    background: linear-gradient(135deg, var(--text-primary) 0%, #3a3f45 100%);
+    color: #FFFFFF;
+    border: none;
+    padding: 16px 42px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.butn2container button::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, var(--primary-gold) 0%, #C59F28 100%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.butn2container button:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+}
+
+.butn2container button:hover::before {
+    opacity: 1;
+}
+
+/* Stats Card - Floating Glass Slab */
+.DescriptionDiv {
+    width: 320px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-lg);
+    display: flex;
+    padding: 40px 30px;
+    flex-direction: column;
+    gap: 35px;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+.DescriptionDiv:hover {
+    animation-play-state: paused;
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.DescriptionDiv > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.DescriptionDiv h1 {
+    color: var(--primary-gold);
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.DescriptionDiv p {
+    font-family: var(--font-sans);
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
     .Navbar {
-
-         padding:15px 16px;
-         z-index: 10;
+        padding: 16px 5%;
     }
 
-    .LinkDiv {
-
+    .LinkDiv, .NavBtn {
         display: none;
-
-    }
-
-    .NavBtn {
-
-        display: none;
-
-    }
-
-    .ImgDiv {
-
-        gap: 15px;
-
-
-    }
-
-    .ImgDiv h1 {
-        font-size: 1.8rem;
-    }
-
-    .Main-Contents {
-        width: 90%;
-        margin-left: 0;
-        padding-top: 130px;
-        align-items: center;
-        text-align: center;
-    }
-
-    .Main-Contents h1 {
-        font-size: 2.7rem;
-    }
-
-    .Main-Contents p {
-
-        font-size: 1rem;
-
-    }
-
-    .Main-Contents button {
-
-        width: 180px;
-
-    }
-
-    .DescriptionDiv {
-
-        width: 90%;
-        padding: 20px;
-        gap: 35px;
-        margin: 40px 0 0;
-
-    }
-
-    .Mainconatiner {
-        min-height: 100vh;
-        height: auto;
-        padding-bottom: 50px;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
     }
 
     .MenuIcon {
-
         display: block;
-
-        font-size: 30px;
-
-        color: #D4AF37;
-
-        cursor: pointer;
-
     }
 
+    .Mainconatiner {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        padding: 130px 5% 60px;
+        gap: 50px;
+        background: 
+            radial-gradient(circle at 50% 50%, transparent 20%, rgba(244, 235, 225, 0.6) 80%),
+            linear-gradient(to bottom, rgba(244, 235, 225, 0.8) 20%, rgba(244, 235, 225, 0.3) 60%, rgba(244, 235, 225, 0.8) 100%),
+            url("../assets/living_room.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .Main-Contents {
+        width: 100%;
+        align-items: center;
+    }
+
+    .Main-Contents h1 {
+        font-size: 2.8rem;
+    }
+
+    .Main-Contents p {
+        font-size: 1rem;
+    }
+
+    .DescriptionDiv {
+        width: 100%;
+        max-width: 450px;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 30px 20px;
+        gap: 20px;
+    }
+
+    .DescriptionDiv > div {
+        align-items: center;
+    }
+
+    .DescriptionDiv h1 {
+        font-size: 2.2rem;
+    }
+
+    .DescriptionDiv p {
+        font-size: 11px;
+    }
+
+    /* Mobile Menu Overlay Styles */
     .MobileMenu {
-
         position: fixed;
-
         top: 80px;
         left: 0;
         width: 100%;
         height: calc(100vh - 80px);
-
-        background: rgba(11, 13, 15, 0.95);
-        backdrop-filter: blur(15px);
-
+        background: var(--bg-glass-heavy);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-
         gap: 30px;
-        padding-top: 50px;
-
-        z-index: 999;
-        animation: slideDown .35s ease
-
-        
+        padding-top: 60px;
+        z-index: 99;
+        animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        border-top: 1px solid var(--border-color);
     }
 
     .MobileMenu a {
-
-        color: white;
-
+        color: var(--text-primary);
         font-size: 20px;
-
+        font-weight: 600;
         text-decoration: none;
-
-        font-family: "Plus Jakarta Sans", sans-serif;
-
-        transition: .3s;
-
+        font-family: var(--font-sans);
+        transition: color var(--transition-fast);
     }
 
     .MobileMenu a:hover {
-
-        color: #D4AF37;
-
+        color: var(--primary-gold);
     }
 
     .MobileMenu button {
-
-        background: #D4AF37;
-
-        padding: 12px 28px;
-
+        background: var(--primary-gold);
+        color: #FFFFFF;
         border: none;
-
-        border-radius: 50px;
-
-        font-weight: 600;
-
+        padding: 14px 36px;
+        border-radius: var(--radius-full);
+        font-weight: 650;
+        font-size: 16px;
+        font-family: var(--font-sans);
         cursor: pointer;
-    }
-    .MenuIcon svg{
-    transition:.3s;
-}
-
-.MenuIcon svg:hover{
-    transform:scale(1.1);
-    color:#E6C878;
-}
-.Logo{
-    width:40px;
-    height:48px;
-}
-.ImgDiv h1{
-    font-size:1.8rem;
-}
-
-}
-@keyframes slideDown{
-
-    from{
-        opacity:0;
-        transform:translateY(-20px);
+        box-shadow: var(--shadow-gold);
+        transition: transform var(--transition-fast);
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    .MobileMenu button:active {
+        transform: scale(0.95);
     }
+}
 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

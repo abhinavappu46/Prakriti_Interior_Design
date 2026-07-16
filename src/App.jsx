@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import PrakitiHome from './sreens/prakitiHome'
 import { BrowserRouter, Routes, Route } from "react-router-dom";

@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import '../styles/prakitiHome.css'
-import { Link } from "react-router-dom";
 import PrakritiConsultant from './prakritiConsultant';
 import PrakritiService from './PrakritiService';
+import PrakritiProjects from './PrakritiProjects';
 import PrakritiAbout from './PrakritiAbout';
 import PrakritiBottom from './PrakritiBottom';
 import { FaBars, FaTimes } from "react-icons/fa";
 import ScrollContact from './ScrollContact';
+import logo from "../assets/prakriti.jpeg"
 function PrakitiHome() {
 const [menuOpen, setMenuOpen] =useState(false);
 const scrollToConsultation = ()=>{
@@ -29,7 +30,7 @@ const scrollToConsultation = ()=>{
             <nav className='Navbar'>
                 
                 <div className='ImgDiv'>
-                    <img src="/prakriti_logo_transparent.png" alt='prakriti logo' className='Logo'></img>
+                    <img src={logo} alt='prakriti logo' className='Logo'></img>
                     <h1>Prakriti</h1>
                 </div>
 
@@ -38,6 +39,7 @@ const scrollToConsultation = ()=>{
                     <a href='#About' className='Links' onClick={() => setMenuOpen(false)}>About</a>
                     <a href='#Contact' className='Links' onClick={() => setMenuOpen(false)}>Contact</a>
                     <a href='#Service' className='Links' onClick={() => setMenuOpen(false)}>Service</a>
+                    <a href='#Projects' className='Links' onClick={() => setMenuOpen(false)}>Projects</a>
                     
                 </div>
                 <button className='NavBtn' onClick={scrollToConsultation}>Book  Consultation</button>
@@ -61,6 +63,7 @@ const scrollToConsultation = ()=>{
             <a href="#Home" onClick={() => setMenuOpen(false)}>Home</a>
             <a href="#About" onClick={() => setMenuOpen(false)}>About</a>
            <a href='#Service' className='Links' onClick={() => setMenuOpen(false)}>Service</a>
+           <a href='#Projects' className='Links' onClick={() => setMenuOpen(false)}>Projects</a>
             <a href="#Contact" onClick={() => setMenuOpen(false)}>Contact</a>
             <button
     onClick={() => {
@@ -72,35 +75,37 @@ const scrollToConsultation = ()=>{
 </button>
         </div>
     )}
-            <div className='Main-Contents'>
-                <h1>Defining the Art of</h1><br />
-                <h1 style={{ color: "#D4AF37" }}>Refined Living</h1><br />
+            <div className='Main-Contents animate-slide-up'>
+                <h1>Defining the Art of</h1>
+                <h1 className="GoldHighlight">Refined Living</h1>
                 <p>
                     We create luxurious interiors that blend timeless elegance,
                     modern functionality, and exceptional craftsmanship to
                     transform every space into a masterpiece.
-                </p><br />
-                <div className='butn2container'><button>Explore projects </button></div>
-
+                </p>
+                <div className='butn2container'>
+                    <button onClick={() => document.getElementById("Projects").scrollIntoView({behavior: "smooth"})}>Explore Projects</button>
+                </div>
             </div>
 
-            <div className='DescriptionDiv'>
+            <div className='DescriptionDiv animate-fade-in'>
                 <div className='InsideCard1'>
-                    <h1>3+ </h1>
-                    <p>Years of Mastery</p></div>
-                <div>
-                    <h1>50+ </h1>
-                    <p>project completed</p>
+                    <h1>3+</h1>
+                    <p>Years of Mastery</p>
                 </div>
-                <div>
+                <div className='InsideCard2'>
+                    <h1>50+</h1>
+                    <p>Projects Completed</p>
+                </div>
+                <div className='InsideCard3'>
                     <h1>25</h1>
-                    <p>designers</p>
+                    <p>Designers</p>
                 </div>
-
             </div>
 
         </div>
         <div id='Service'><PrakritiService/></div>
+        <div id='Projects'><PrakritiProjects/></div>
         <div id='About'><PrakritiAbout/></div>
         <div id='consultation'><PrakritiConsultant/></div>
         <div id='Contact'><PrakritiBottom/></div>
