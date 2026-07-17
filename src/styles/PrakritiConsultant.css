@@ -31,6 +31,15 @@
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  
+  /* Initial State */
+  opacity: 0;
+  transform: translateX(-100px) scale(0.95);
+  filter: blur(6px);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+              filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0ms;
 }
 
 .FromContainer1 img {
@@ -87,6 +96,13 @@
   justify-content: center;
   padding: 45px;
   background: var(--bg-surface);
+  
+  /* Initial State */
+  opacity: 0;
+  transform: translateX(100px);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 300ms;
 }
 
 .FromContainer2 form {
@@ -166,7 +182,12 @@
   color: #FFFFFF;
   cursor: pointer;
   box-shadow: var(--shadow-md);
-  transition: all var(--transition-normal);
+  
+  /* Initial state for final scale entrance */
+  transform: scale(0.96);
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              background-color var(--transition-normal),
+              box-shadow var(--transition-normal);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -174,12 +195,12 @@
 
 .FormBtn:hover:not(:disabled) {
   background-color: var(--primary-gold);
-  transform: translateY(-2px);
+  transform: scale(1) translateY(-2px); /* Maintain scale(1) on hover */
   box-shadow: var(--shadow-gold);
 }
 
 .FormBtn:active:not(:disabled) {
-  transform: translateY(0);
+  transform: scale(1) translateY(0);
 }
 
 .FormBtn:disabled {
@@ -223,6 +244,7 @@
   .FromContainer1 {
     width: 100%;
     height: 250px;
+    transform: translateY(30px) scale(0.98); /* Reset horizontal shift to safe vertical shift for mobile */
   }
 
   .TextDiv {
@@ -236,6 +258,17 @@
 
   .FromContainer2 {
     padding: 35px 25px;
+    transform: translateY(30px); /* Reset horizontal shift to safe vertical shift for mobile */
+  }
+
+  .reveal-active .FromContainer1,
+  .reveal-instant .FromContainer1 {
+    transform: translateY(0) scale(1);
+  }
+
+  .reveal-active .FromContainer2,
+  .reveal-instant .FromContainer2 {
+    transform: translateY(0);
   }
 
   .InputGroup {
@@ -244,5 +277,82 @@
   
   .FormBtn {
     height: 48px;
+  }
+}
+
+/* --- LUXURY SPLIT-REVEAL VIEWPORT ANIMATIONS --- */
+
+/* Active reveal transitions on intersection */
+.reveal-active .FromContainer1 {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  filter: blur(0);
+}
+
+.reveal-active .FromContainer2 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Instant State on Intersection (scrolling DOWN) */
+.reveal-instant .FromContainer1,
+.reveal-instant .FromContainer2,
+.reveal-instant .stagger-field,
+.reveal-instant .FormBtn {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+}
+
+/* Staggered Form Fields */
+.stagger-field {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-active .stagger-field {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays: Name (300ms) -> Email (400ms) -> Phone (500ms) -> Project (600ms) -> Button (700ms) */
+.reveal-active .stagger-field:nth-child(1) {
+  transition-delay: 300ms;
+}
+.reveal-active .stagger-field:nth-child(2) {
+  transition-delay: 400ms;
+}
+.reveal-active .stagger-field:nth-child(3) {
+  transition-delay: 500ms;
+}
+.reveal-active .stagger-field:nth-child(4) {
+  transition-delay: 600ms;
+}
+.reveal-active .stagger-field:nth-child(5) {
+  transition-delay: 700ms;
+}
+
+/* Button Wrapper holds submit button. Button itself scales up after slide completes */
+.reveal-active .FormBtn {
+  transform: scale(1);
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1) 1300ms, /* Starts after 700ms button-wrapper delay + 600ms slide-up = 1300ms */
+              background-color var(--transition-normal),
+              box-shadow var(--transition-normal);
+}
+
+/* Reduced Motion support */
+@media (prefers-reduced-motion: reduce) {
+  .FromContainer1,
+  .FromContainer2,
+  .stagger-field,
+  .FormBtn {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    animation: none !important;
   }
 }

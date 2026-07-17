@@ -1,0 +1,129 @@
+/* src/components/LuxuryLoader.css */
+
+.luxury-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F7F4EF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: all;
+}
+
+/* Phase: Fade out overlay */
+.luxury-loader-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.luxury-loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 90%;
+}
+
+.luxury-logo-container {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.luxury-loader-overlay.fade-in .luxury-logo-container,
+.luxury-loader-overlay.grow-line .luxury-logo-container,
+.luxury-loader-overlay.hold .luxury-logo-container,
+.luxury-loader-overlay.fade-out .luxury-logo-container {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.luxury-loader-logo {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 20px;
+  border-radius: 50%;
+}
+
+/* Gold Divider Line */
+.luxury-loader-divider-wrapper {
+  width: 150px;
+  height: 1px;
+  overflow: hidden;
+  margin: 15px 0 25px;
+}
+
+.luxury-loader-divider {
+  width: 100%;
+  height: 100%;
+  background-color: #D4AF37;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.luxury-loader-overlay.grow-line .luxury-loader-divider,
+.luxury-loader-overlay.hold .luxury-loader-divider,
+.luxury-loader-overlay.fade-out .luxury-loader-divider {
+  transform: scaleX(1);
+}
+
+/* Text Container */
+.luxury-loader-text-container {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Text fades in with the logo */
+.luxury-loader-overlay.fade-in .luxury-loader-text-container,
+.luxury-loader-overlay.grow-line .luxury-loader-text-container,
+.luxury-loader-overlay.hold .luxury-loader-text-container,
+.luxury-loader-overlay.fade-out .luxury-loader-text-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.luxury-loader-brand {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #2C2621;
+  margin: 0 0 8px 0;
+  letter-spacing: 2px;
+}
+
+.luxury-loader-subtitle {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6B6258;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .luxury-loader-overlay,
+  .luxury-logo-container,
+  .luxury-loader-divider,
+  .luxury-loader-text-container {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .luxury-loader-overlay.fade-out {
+    opacity: 0 !important;
+  }
+}

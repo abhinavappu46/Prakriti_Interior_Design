@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/prakitiHome.css'
 import PrakritiConsultant from './prakritiConsultant';
 import PrakritiService from './PrakritiService';
@@ -8,8 +8,35 @@ import PrakritiBottom from './PrakritiBottom';
 import { FaBars, FaTimes } from "react-icons/fa";
 import ScrollContact from './ScrollContact';
 import logo from "../assets/prakriti.jpeg"
+import LuxuryLoader from './LuxuryLoader';
+
 function PrakitiHome() {
     const [menuOpen, setMenuOpen] = useState(false);
+    
+    // Play intro loader only once per page load/session.
+    const [showLoader] = useState(() => {
+        if (typeof window !== 'undefined') {
+            const played = window.prakritiIntroPlayed;
+            window.prakritiIntroPlayed = true;
+            return !played;
+        }
+        return true;
+    });
+
+    const [isRevealing, setIsRevealing] = useState(false);
+    const [isLoaderVisible, setIsLoaderVisible] = useState(showLoader);
+
+    useEffect(() => {
+        if (!showLoader) return;
+
+        // STEP 5: Reveal page contents starting at 2100ms as the loader fades out
+        const revealTimeout = setTimeout(() => {
+            setIsRevealing(true);
+        }, 2100);
+
+        return () => clearTimeout(revealTimeout);
+    }, [showLoader]);
+
     const scrollToConsultation = () => {
 
         document.getElementById("consultation").scrollIntoView({
@@ -26,7 +53,8 @@ function PrakitiHome() {
 
     return (
         <div>
-            <div className='Mainconatiner' id='Home'>
+            {isLoaderVisible && <LuxuryLoader onComplete={() => setIsLoaderVisible(false)} />}
+            <div className={`Mainconatiner ${!showLoader ? 'no-intro' : isRevealing ? 'intro-revealed' : 'intro-active'}`} id='Home'>
                 <nav className='Navbar'>
 
                     <div className='ImgDiv'>
@@ -75,7 +103,7 @@ function PrakitiHome() {
                         </button>
                     </div>
                 )}
-                <div className='Main-Contents animate-slide-up'>
+                <div className='Main-Contents'>
                     <h1>Defining the Art of</h1>
                     <h1 className="GoldHighlight">Refined Living</h1>
                     <p>
@@ -88,7 +116,7 @@ function PrakitiHome() {
                     </div>
                 </div>
 
-                <div className='DescriptionDiv animate-fade-in'>
+                <div className='DescriptionDiv'>
                     <div className='InsideCard1'>
                         <h1>3+</h1>
                         <p>Years of Mastery</p>

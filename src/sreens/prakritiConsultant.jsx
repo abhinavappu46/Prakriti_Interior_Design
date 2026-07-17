@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import '../styles/PrakritiConsultant.css'
 import picture from '../assets/screen.png'
 import api from '../../Api call/Api'
@@ -14,6 +14,62 @@ function PrakritiConsultant() {
     Phone: "",
     Service: ""
   });
+
+  const sectionRef = useRef(null);
+  const [animationClass, setAnimationClass] = useState('');
+
+  // Keep track of scroll direction and page load
+  const prevScrollY = useRef(0);
+  const scrollDirection = useRef('down');
+  const isFirstLoad = useRef(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > prevScrollY.current) {
+        scrollDirection.current = 'down';
+      } else if (currentScrollY < prevScrollY.current) {
+        scrollDirection.current = 'up';
+      }
+      prevScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Play animation if first page load OR if scroll direction is DOWN
+          if (isFirstLoad.current || scrollDirection.current === 'down') {
+            setAnimationClass('reveal-active');
+            isFirstLoad.current = false;
+          } else {
+            // Upward scroll after first load: load instantly (no animation)
+            setAnimationClass('reveal-instant');
+          }
+        } else {
+          // Remove the animation class after leaving the viewport
+          setAnimationClass('');
+        }
+      },
+      {
+        threshold: 0.15, // Starts when 15% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -76,8 +132,11 @@ function PrakritiConsultant() {
   };
 
   return (
-    <div className='MainConsultantContainer'>
-      <div className='FromContainerDiv animate-fade-in'>
+    <div 
+      ref={sectionRef} 
+      className={`MainConsultantContainer ${animationClass}`}
+    >
+      <div className='FromContainerDiv'>
         <div className='FromContainer1'>
           <img src={picture} alt='Consultation office space' />
           <div className='TextDiv'>
@@ -89,7 +148,7 @@ function PrakritiConsultant() {
         
         <div className='FromContainer2'>
           <form onSubmit={HandleRequest}>
-            <div className='FromContainer2label'>
+            <div className='FromContainer2label stagger-field'>
               <label>Full Name</label>
               <input 
                 placeholder='Enter your full name' 
@@ -101,7 +160,7 @@ function PrakritiConsultant() {
                  
               />
             </div>
-            <div className='FromContainer2label'>
+            <div className='FromContainer2label stagger-field'>
               <label>Email Address</label>
               <input 
                 placeholder='name@example.com' 
@@ -113,7 +172,7 @@ function PrakritiConsultant() {
                 required 
               />
             </div>
-            <div className='FromContainer2label'>
+            <div className='FromContainer2label stagger-field'>
               <label>Phone Number</label>
               <input 
                 placeholder='10-digit mobile number' 
@@ -126,7 +185,7 @@ function PrakritiConsultant() {
                 required 
               />
             </div>
-            <div className='FromContainer2label'>
+            <div className='FromContainer2label stagger-field'>
               <label>Project Type</label>
               <select 
                 className='InputGroup select-field' 
@@ -146,14 +205,16 @@ function PrakritiConsultant() {
               </select>
             </div>
             
-            <button type='submit' disabled={Loading} className='FormBtn'>
-              {Loading ? (
-                <span className="spinner-container">
-                  <span className="button-spinner"></span>
-                  Sending Request...
-                </span>
-              ) : "Schedule Consultation"}
-            </button>
+            <div className="button-wrapper stagger-field">
+              <button type='submit' disabled={Loading} className='FormBtn'>
+                {Loading ? (
+                  <span className="spinner-container">
+                    <span className="button-spinner"></span>
+                    Sending Request...
+                  </span>
+                ) : "Schedule Consultation"}
+              </button>
+            </div>
           </form>
         </div>
       </div>
