@@ -1,18 +1,63 @@
+import { useEffect, useState, useRef } from 'react';
 import '../styles/PrakritiService.css'
 import picture1 from '../assets/screen.png'
 import picture3 from '../assets/Living.png'
 import picture4 from '../assets/bedroom.png'
 
 function PrakritiService() {
+  const containerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [animationCompleted, setAnimationCompleted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      },
+      {
+        threshold: 0.3, // Trigger when 30% of the section is visible
+      }
+    );
+
+    const currentRef = containerRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setAnimationCompleted(true);
+      }, 2500); // 1300ms header/line + 800ms card entry duration + buffer (2500ms total is perfect)
+      return () => clearTimeout(timer);
+    } else {
+      setAnimationCompleted(false);
+    }
+  }, [isVisible]);
+
   return (
-    <div className='MainContainerService'>
-      <div className='ServiceHeader animate-fade-in'>
+    <div 
+      className={`MainContainerService ${isVisible ? 'animate-in' : ''} ${animationCompleted ? 'animation-completed' : ''}`}
+      ref={containerRef}
+    >
+      <div className='ServiceHeader'>
         <h5>Our Offerings</h5>
         <h1>Tailored Design Solutions</h1>
         <p>Bespoke interior spaces crafted with architectural integrity, premium materials, and flawless execution.</p>
       </div>
       
-      <div className='ServiceGrid animate-slide-up'>
+      <div className='ServiceGrid'>
         <div className='ServiceCard'>
           <div className='ServicePicture'>
             <img src={picture1} className='serviceimg' alt='Kitchen design' />
