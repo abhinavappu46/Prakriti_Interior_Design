@@ -98,7 +98,7 @@ function PrakritiConsultant() {
                 name='Name' 
                 value={formData.Name} 
                 onChange={handleChange} 
-                required 
+                 
               />
             </div>
             <div className='FromContainer2label'>
