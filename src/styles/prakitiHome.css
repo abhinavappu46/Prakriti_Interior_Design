@@ -21,15 +21,26 @@
     height: 100%;
     /* Layered premium overlay for excellent text contrast and warm luxury tones */
     background:
-        radial-gradient(circle at 50% 50%, rgba(253, 251, 247, 0.4) 0%, rgba(44, 38, 33, 0.5) 100%),
-        linear-gradient(to right, rgba(253, 251, 247, 0.9) 0%, rgba(253, 251, 247, 0.7) 40%, rgba(253, 251, 247, 0.2) 100%),
+        linear-gradient(
+            to right,
+            rgba(20, 18, 16, 0.62) 0%,
+            rgba(20, 18, 16, 0.42) 45%,
+            rgba(20, 18, 16, 0.20) 100%
+        ),
+        linear-gradient(
+            to top,
+            rgba(20, 18, 16, 0.45) 0%,
+            rgba(20, 18, 16, 0.05) 50%,
+            rgba(20, 18, 16, 0.15) 100%
+        ),
         url("../assets/living_room.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     z-index: 0;
     pointer-events: none;
+
 }
 
 /* --- NAVBAR STYLING --- */
@@ -167,9 +178,9 @@
 
 .HeroEyebrow {
     font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     color: var(--primary-gold);
     text-transform: uppercase;
     margin-bottom: 5px;
@@ -180,14 +191,14 @@
     font-family: var(--font-serif);
     font-size: clamp(2.4rem, 5vw, 4.2rem);
     font-weight: 400;
-    color: var(--text-primary);
-    line-height: 1.15;
+    color: #F5F1E8;
+    line-height: 1.05;
     margin: 0;
 }
 
 .GoldHighlight {
     font-style: italic;
-    color: var(--primary-gold);
+    color: #D4AF37;
     font-weight: 500;
     background: linear-gradient(120deg, var(--primary-gold) 0%, #C59F28 100%);
     -webkit-background-clip: text;
@@ -208,17 +219,18 @@
     width: 70px;
     height: 1px;
     background-color: var(--primary-gold);
-    margin: 10px 0 15px;
+   margin-top: 25px;
+    margin-bottom: 28px;
     transform-origin: left center;
 }
 
 .Main-Contents p {
     font-family: var(--font-sans);
-    color: var(--text-secondary);
+    color: rgba(245, 241, 232, 0.78);;
     font-size: 1.05rem;
     line-height: 1.8;
-    max-width: 550px;
-    margin-bottom: 20px;
+    max-width: 600px;
+    margin-bottom: 32px;
 }
 
 .butn2container {
@@ -228,58 +240,172 @@
 
 /* --- BUTTON MICRO-INTERACTIONS --- */
 
+
+
 .CTA-Primary {
+    position: relative;
+    overflow: hidden;
+
     background: var(--text-primary);
     color: #FFFFFF;
+
     border: 1px solid var(--text-primary);
+
     padding: 16px 36px;
+
     font-family: var(--font-sans);
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+
     border-radius: var(--radius-full);
     cursor: pointer;
+
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
+
+    transition:
+        transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+        background 400ms ease,
+        border-color 400ms ease,
+        box-shadow 400ms ease;
 }
+
+
+/* Subtle light sweep */
+
+.CTA-Primary::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 700ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    pointer-events: none;
+}
+
+
+/* Hover */
 
 .CTA-Primary:hover {
     background: var(--primary-gold);
     border-color: var(--primary-gold);
-    transform: translateY(-3px);
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.20);
 }
+
+
+/* Light sweep on hover */
+
+.CTA-Primary:hover::before {
+    left: 140%;
+}
+
+
+/* Arrow */
 
 .CTA-Arrow {
-    transition: transform 400ms cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    z-index: 1;
+
     display: inline-block;
+
+    transition:
+        transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+
+/* Arrow movement */
 
 .CTA-Primary:hover .CTA-Arrow {
-    transform: translate(3px, -3px);
+    transform: translate(4px, -4px);
 }
 
+
+/* Click feedback */
+
+.CTA-Primary:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+
+
+
 .CTA-Secondary {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--text-primary);
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(20, 18, 16, 0.25);
+
+    color: #F5F1E8;
+
+    border: 1px solid rgba(245, 241, 232, 0.65);
+
     padding: 16px 36px;
+
     font-family: var(--font-sans);
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+
     border-radius: var(--radius-full);
+
     cursor: pointer;
-    transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+        color 400ms ease,
+        background 400ms ease,
+        border-color 400ms ease,
+        box-shadow 400ms ease;
 }
+
+
+/* Secondary button hover */
 
 .CTA-Secondary:hover {
     color: var(--primary-gold);
+
+    background: rgba(20, 18, 16, 0.55);
+
     border-color: var(--primary-gold);
-    transform: translateY(-3px);
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+
+/* Click feedback */
+
+.CTA-Secondary:active {
+    transform: translateY(-1px) scale(0.98);
 }
 
 /* --- PREMIUM STATISTICS SECTION --- */
@@ -292,31 +418,80 @@
 }
 
 .StatItem {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-    position: relative;
-    background: linear-gradient(135deg, rgba(44, 38, 33, 0.88) 0%, rgba(28, 25, 23, 0.95) 100%);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+
+    min-width: 180px;
+    min-height: 140px;
+    box-sizing: border-box;
+
+    padding: 25px 35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(44, 38, 33, 0.88) 0%,
+            rgba(28, 25, 23, 0.95) 100%
+        );
+
+    border: 1px solid rgba(212, 175, 55, 0.20);
+
+    border-radius: var(--radius-md, 8px);
+
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-radius: var(--radius-md, 8px);
-    padding: 25px 35px;
-    min-width: 180px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(212, 175, 55, 0.15);
-    transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
-                border-color 450ms cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 450ms cubic-bezier(0.22, 1, 0.36, 1),
-                opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(212, 175, 55, 0.15);
+
+    overflow: hidden;
+
+    transition:
+        transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 0;
+    transform: translateY(25px);
 }
 
+.StatItem::before {
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--primary-gold);
+
+    transition:
+        width 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Top gold line expands on hover */
+
+.StatItem:hover::before {
+    width: 100%;
+}
+
+
+
 .StatItem:hover {
-    transform: translateY(-6px);
-    border-color: rgba(212, 175, 55, 0.6);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 
-                inset 0 1px 0 rgba(212, 175, 55, 0.3),
-                0 0 15px rgba(212, 175, 55, 0.08);
+    transform: translateY(-8px);
+    border-color: rgba(212, 175, 55, 0.55);
+    box-shadow:
+        0 25px 45px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(212, 175, 55, 0.25);
 }
 
 .StatItem h2 {
@@ -333,7 +508,7 @@
 
 .StatItem:hover h2 {
     transform: translateY(-3px);
-    color: #f7d047;
+    color: #E6C878;
     filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.2));
 }
 
@@ -434,12 +609,17 @@
 
     .Mainconatiner::before {
         background:
-            radial-gradient(circle at 50% 50%, rgba(253, 251, 247, 0.5) 0%, rgba(244, 235, 225, 0.8) 100%),
-            linear-gradient(to bottom, rgba(253, 251, 247, 0.9) 20%, rgba(244, 235, 225, 0.6) 80%),
+           linear-gradient(
+                to bottom,
+                rgba(20, 18, 16, 0.55) 0%,
+                rgba(20, 18, 16, 0.35) 50%,
+                rgba(20, 18, 16, 0.60) 100%
+            ),
             url("../assets/living_room.png");
         background-size: cover;
         background-position: center;
-        background-attachment: fixed;
+        animation: heroBackgroundDrift 12s ease-in-out infinite alternate;
+        
     }
 
     .Main-Contents {
@@ -535,6 +715,7 @@
     }
 }
 
+
 @media (max-width: 576px) {
     .Mainconatiner {
         padding: 120px 6% 60px;
@@ -572,23 +753,9 @@
     }
 }
 
-/* --- LUXURY CINEMATIC PAGE REVEAL TIMELINE --- */
 
-/* Background image starts slightly zoomed and slowly zooms to 1.0 */
-.Mainconatiner.intro-active::before {
-    opacity: 0;
-    transform: scale(1.06);
-    filter: blur(4px);
-}
 
-.Mainconatiner.intro-revealed::before {
-    opacity: 1;
-    transform: scale(1.0);
-    filter: blur(0);
-    transition: opacity 2s cubic-bezier(0.25, 1, 0.5, 1),
-                transform 6s cubic-bezier(0.25, 1, 0.5, 1),
-                filter 2s cubic-bezier(0.25, 1, 0.5, 1);
-}
+
 
 /* Sequential Staggered Entrance Animations */
 .Navbar,
@@ -621,7 +788,7 @@
 }
 
 .intro-active .Main-Contents h1 {
-    transform: translateY(30px);
+    transform: translateY(25px);
     opacity: 0;
 }
 
@@ -660,7 +827,11 @@
     transform: translateY(20px);
     opacity: 0;
 }
-
+.Mainconatiner.intro-active::before {
+    opacity: 0;
+    transform: scale(1.06);
+    filter: blur(4px);
+}
 /* Transition Delays when revealed */
 .intro-revealed .Navbar {
     transform: translateY(0);
@@ -677,7 +848,7 @@
 .intro-revealed .Main-Contents h1 {
     transform: translateY(0);
     opacity: 1;
-    transition-delay: 300ms;
+    transition-delay: 250ms;
 }
 
 .intro-revealed .GoldHighlight {
@@ -713,19 +884,19 @@
 .intro-revealed .StatItem:nth-child(1) {
     transform: translateY(0);
     opacity: 1;
-    transition-delay: 1100ms;
+    transition-delay: 1.1s;
 }
 
 .intro-revealed .StatItem:nth-child(2) {
     transform: translateY(0);
     opacity: 1;
-    transition-delay: 1250ms;
+    transition-delay: 1.25s;
 }
 
 .intro-revealed .StatItem:nth-child(3) {
     transform: translateY(0);
     opacity: 1;
-    transition-delay: 1400ms;
+    transition-delay: 1.4s;
 }
 
 .intro-revealed .ScrollIndicator {
@@ -733,31 +904,63 @@
     opacity: 1;
     transition-delay: 1350ms;
 }
+.Mainconatiner.intro-revealed::before {
+    opacity: 1;
+    filter: blur(0);
+
+    animation: heroBackgroundDrift 5s ease-in-out infinite alternate;
+
+    transition:
+        opacity 2s cubic-bezier(0.25, 1, 0.5, 1),
+        filter 2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 
 /* Bypass classes for subsequent visits (played once per page load) */
 .no-intro .Navbar,
 .no-intro .HeroEyebrow,
 .no-intro .Main-Contents h1,
 .no-intro .GoldHighlight,
-.no-intro .HeroDecorativeLine,
 .no-intro .Main-Contents p,
 .no-intro .butn2container,
 .no-intro .HeroStats,
-.no-intro .StatItem,
 .no-intro .ScrollIndicator {
     transform: none !important;
     opacity: 1 !important;
-    clip-path: none !important;
+    transition: none !important;
+}
+
+
+/* Decorative line needs its own width */
+
+.no-intro .HeroDecorativeLine {
     width: 70px !important;
+    opacity: 1 !important;
+    transition: none !important;
+}
+
+
+/* Gold heading */
+
+.no-intro .GoldHighlight {
+    clip-path: none !important;
+}
+
+
+/* Statistics cards */
+
+.no-intro .StatItem {
+    opacity: 1 !important;
+    transform: none !important;
     transition: none !important;
 }
 
 .no-intro::before {
     opacity: 1 !important;
-    transform: none !important;
     filter: none !important;
-    transition: none !important;
+    animation: heroBackgroundDrift 5s ease-in-out infinite alternate;
 }
+
 
 /* Reduced Motion Preference support */
 @media (prefers-reduced-motion: reduce) {
@@ -782,4 +985,28 @@
     .ScrollIndicatorLine::after {
         animation: none !important;
     }
+}
+/* =========================================
+   CINEMATIC HERO BACKGROUND MOVEMENT
+========================================= */
+
+.Mainconatiner.intro-revealed::before {
+    animation: heroBackgroundDrift 5s ease-in-out infinite alternate;
+}
+
+.no-intro::before {
+    animation: heroBackgroundDrift 5s ease-in-out infinite alternate;
+}
+
+
+@keyframes heroBackgroundDrift {
+
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+
 }
