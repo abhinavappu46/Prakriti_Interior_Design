@@ -104,31 +104,48 @@ function PrakitiHome() {
                     </div>
                 )}
                 <div className='Main-Contents'>
-                    <h1>Defining the Art of</h1>
-                    <h1 className="GoldHighlight">Refined Living</h1>
+                    <span className="HeroEyebrow">INTERIOR DESIGN STUDIO</span>
+                    <h1>
+                        Defining the Art of <br />
+                        <span className="GoldHighlight">Refined Living</span>
+                    </h1>
+                    <div className="HeroDecorativeLine"></div>
                     <p>
                         We create luxurious interiors that blend timeless elegance,
                         modern functionality, and exceptional craftsmanship to
                         transform every space into a masterpiece.
                     </p>
                     <div className='butn2container'>
-                        <button onClick={() => document.getElementById("Projects").scrollIntoView({ behavior: "smooth" })}>Explore Projects</button>
+                        <button className="CTA-Primary" onClick={() => document.getElementById("Projects").scrollIntoView({ behavior: "smooth" })}>
+                            Explore Our Work <span className="CTA-Arrow">↗</span>
+                        </button>
+                        <button className="CTA-Secondary" onClick={scrollToConsultation}>
+                            Book a Consultation
+                        </button>
                     </div>
                 </div>
 
-                <div className='DescriptionDiv'>
-                    <div className='InsideCard1'>
-                        <h1>3+</h1>
-                        <p>Years of Mastery</p>
+                <div className='HeroStats'>
+                    <div className='StatItem'>
+                        <h2>3+</h2>
+                        <div className="StatLine"></div>
+                        <span>Years of Mastery</span>
                     </div>
-                    <div className='InsideCard2'>
-                        <h1>50+</h1>
-                        <p>Projects Completed</p>
+                    <div className='StatItem'>
+                        <h2>50+</h2>
+                        <div className="StatLine"></div>
+                        <span>Projects Completed</span>
                     </div>
-                    <div className='InsideCard3'>
-                        <h1>25</h1>
-                        <p>Designers</p>
+                    <div className='StatItem'>
+                        <h2>25</h2>
+                        <div className="StatLine"></div>
+                        <span>Designers</span>
                     </div>
+                </div>
+
+                <div className="ScrollIndicator">
+                    <span>SCROLL TO EXPLORE</span>
+                    <div className="ScrollIndicatorLine"></div>
                 </div>
 
             </div>
